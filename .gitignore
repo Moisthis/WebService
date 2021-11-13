@@ -410,10 +410,10 @@ fabric.properties
 #
 # Recommended template: Node.gitignore
 
-# TODO: where does this rule come from?
+
 docs/_book
 
-# TODO: where does this rule come from?
+
 test/
 
 ### Vue template
@@ -421,10 +421,10 @@ test/
 #
 # Recommended template: Node.gitignore
 
-# TODO: where does this rule come from?
+
 docs/_book
 
-# TODO: where does this rule come from?
+
 test/
 
 ### JetBrains template
@@ -819,10 +819,10 @@ cython_debug/
 #
 # Recommended template: Node.gitignore
 
-# TODO: where does this rule come from?
+
 docs/_book
 
-# TODO: where does this rule come from?
+
 test/
 
 ### Python template
@@ -965,4 +965,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-./.idea
+.idea
