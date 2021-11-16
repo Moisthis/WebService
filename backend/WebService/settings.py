@@ -148,3 +148,8 @@ SIMPLE_JWT = {
 }
 
 # AUTH_USER_MODEL = 'login.UserInfo'  # 设置到某个自定义表
+
+# ERRORS:
+#   RECAPTCHA_PRIVATE_KEY or RECAPTCHA_PUBLIC_KEY is making use of the Google
+#   test keys and will not behave as expected in a production environment
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

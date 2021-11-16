@@ -2,10 +2,9 @@ import base64
 import json
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
+
 from captcha.views import CaptchaStore, captcha_image
-
 from rest_framework_simplejwt.views import TokenObtainPairView
-
 from login.serializer import DmallTokenObtainPairSerializer
 
 
