@@ -7,8 +7,10 @@ from captcha.views import CaptchaStore, captcha_image
 from rest_framework_simplejwt.views import TokenObtainPairView
 from login.serializer import DmallTokenObtainPairSerializer
 
+from django.views import View
 
-class CaptchaAPIView(APIView):
+
+class CaptchaAPIView(View):
 
     def get(self, request):
         hash_key = CaptchaStore.generate_key()
