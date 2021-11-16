@@ -32,21 +32,10 @@ class DmallTokenObtainPairView(TokenObtainPairView):
     serializer_class = DmallTokenObtainPairSerializer
 
 
-# 在你的app文件下下的views.py中写入
-# 首先，我们刚开始写接口的时候是这样的，这样是没有身份验证的，直接就访问成功
-def aa(request):
-    """业务逻辑"""
-    return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
-
-
-# 现在生成了token之后，我们应该这样写：
-# 把函数方法写成类的形式，继承APIView类。
-# APIView是REST framework提供的所有视图的基类, 继承自Django的View，对Django中的View进行了拓展，具备了认证、授权、限流、不同请求数据的解析的功能。
+# 使用 token 之后，应当继承 APIView 类
 class test(APIView):
-    def get(self, request):  # 请求为get时的业务逻辑
-        """业务逻辑"""
+    def get(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
-    def post(self, request):  # 请求为post时的业务逻辑
-        """业务逻辑"""
+    def post(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
