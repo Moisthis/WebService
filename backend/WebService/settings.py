@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'login.utils.cors_middlewares.MyCors',
+    'login.utils.cors_middlewares.MyCors',  # 跨域请求忽略
 ]
 
 ROOT_URLCONF = 'WebService.urls'
