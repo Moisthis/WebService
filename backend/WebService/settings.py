@@ -133,7 +133,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    # DEFAULT_PERMISSION_CLASSES设置默认的权限类，通过认证后赋予用户的权限
+    # DEFAULT_PERMISSION_CLASSES 设置默认的权限类，通过认证后赋予用户的权限
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     # 身份验证类列表
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -144,7 +144,7 @@ REST_FRAMEWORK = {
 # jwt相关配置
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),  # token 的过期时间
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),  # 刷新token的过期时间
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),  # 刷新 token 的过期时间
     # 'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),  # token 的请求头类型
 }
 

@@ -12,6 +12,8 @@ RUN apt-get update && \
 	python3-dev \
 	python3-setuptools \
 	python3-pip \
+	libpcre3 \
+	libpcre3-dev \
 	nginx \
 	supervisor && \
 	pip3 install -U pip setuptools && \
