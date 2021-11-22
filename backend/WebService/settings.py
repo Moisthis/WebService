@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_ROOT = './static'  # /data/WebService/backend/static
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
+# STATICFILES_DIRS = (  # 不能与STATIC_ROOT重名
 #     os.path.join(BASE_DIR, 'app_static'),
 # )
 
