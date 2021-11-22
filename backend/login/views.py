@@ -40,3 +40,8 @@ class test(APIView):
 
     def post(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
+
+
+class test_no_login(View):
+    def get(self, request):
+        return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
