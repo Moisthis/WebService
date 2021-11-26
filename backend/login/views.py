@@ -32,8 +32,7 @@ class DmallTokenObtainPairView(TokenObtainPairView):
     serializer_class = DmallTokenObtainPairSerializer
 
 
-# 使用 token 之后，应当继承 APIView 类
-class test(APIView):
+class test(APIView):  # 使用 token 之后，应当继承 APIView 类
     def get(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
@@ -41,7 +40,7 @@ class test(APIView):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
 
-class test_no_login(APIView):
+class test_no_login(APIView):  # 不需要进行登录验证的逻辑则添加 permission_classes = []
     permission_classes = []
 
     def get(self, request):
