@@ -33,6 +33,11 @@ class DmallTokenObtainPairView(TokenObtainPairView):
 
 
 class test(APIView):  # 使用 token 之后，应当继承 APIView 类
+    """
+    just a test
+    需要携带token
+    """
+
     def get(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
@@ -41,6 +46,10 @@ class test(APIView):  # 使用 token 之后，应当继承 APIView 类
 
 
 class test_no_login(APIView):  # 不需要进行登录验证的逻辑则添加 permission_classes = []
+    """
+    just a test
+    不需要携带token
+    """
     permission_classes = []
 
     def get(self, request):
