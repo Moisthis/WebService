@@ -137,9 +137,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    # DEFAULT_PERMISSION_CLASSES 设置默认的权限类，通过认证后赋予用户的权限
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
-    # 身份验证类列表
+    # 全局的权限认证，只有通过认证后才赋予用户权限
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    # 身份验证类列表，可以设定多个身份验证
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )

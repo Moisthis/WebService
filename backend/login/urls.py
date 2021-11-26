@@ -18,5 +18,5 @@ urlpatterns = [
     path('captcha/token/', DmallTokenObtainPairView.as_view(), name='mytoken'),
 
     path('test/', test.as_view(), name='test'),
-    path('no_login/', test_no_login.as_view(), name='test'),
+    path('test_no_login/', test_no_login.as_view(), name='test'),
 ]

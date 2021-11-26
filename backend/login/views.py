@@ -7,10 +7,9 @@ from captcha.views import CaptchaStore, captcha_image
 from rest_framework_simplejwt.views import TokenObtainPairView
 from login.serializer import DmallTokenObtainPairSerializer
 
-from django.views import View
 
-
-class CaptchaAPIView(View):
+class CaptchaAPIView(APIView):
+    permission_classes = []
 
     def get(self, request):
         hash_key = CaptchaStore.generate_key()
@@ -42,6 +41,11 @@ class test(APIView):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
 
-class test_no_login(View):
+class test_no_login(APIView):
+    permission_classes = []
+
     def get(self, request):
+        return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
+
+    def post(self, request):
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
