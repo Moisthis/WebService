@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # jwt JSON Web 令牌认证
     'captcha',  # 生成验证码
     'login',  # login app
+    'User_Manage',
 ]
 
 MIDDLEWARE = [

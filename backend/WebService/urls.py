@@ -23,5 +23,6 @@ urlpatterns = [
     path('docs/', include_docs_urls(title='api-docs', permission_classes=[])),  # 接口文档
 
     path('api/login/', include('login.urls')),
+    path('api/User/',include('User_Manage.urls')),
 
 ]
