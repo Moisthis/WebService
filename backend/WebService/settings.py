@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'captcha',  # 生成验证码
     'login',  # login app
     'User_Manage',
+    'app01'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'login.utils.cors_middlewares.MyCors',  # 跨域请求忽略
+
+
 ]
 
 ROOT_URLCONF = 'WebService.urls'
@@ -152,7 +155,7 @@ REST_FRAMEWORK = {
 
 # jwt相关配置
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),  # token 的过期时间
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # token 的过期时间
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),  # 刷新 token 的过期时间
     # 'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),  # token 的请求头类型
 }

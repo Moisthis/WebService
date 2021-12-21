@@ -1,10 +1,12 @@
 import base64
 import json
 
+from django.contrib.auth import models
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
 
 from captcha.views import CaptchaStore, captcha_image
+from rest_framework_jwt.utils import jwt_decode_handler
 from rest_framework_simplejwt.views import TokenObtainPairView
 from login.serializer import DmallTokenObtainPairSerializer
 
@@ -33,6 +35,9 @@ class DmallTokenObtainPairView(TokenObtainPairView):
     serializer_class = DmallTokenObtainPairSerializer
 
 
+
+
+
 class test(APIView):  # 使用 token 之后，应当继承 APIView 类
     """
     just a test
@@ -43,7 +48,7 @@ class test(APIView):  # 使用 token 之后，应当继承 APIView 类
         return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
 
     def post(self, request):
-        return JsonResponse({"msg": "ok"}, json_dumps_params={"ensure_ascii": False})
+        return JsonResponse({"msg": "ok？"}, json_dumps_params={"ensure_ascii": False})
 
 
 class test_no_login(APIView):  # 不需要进行登录验证的逻辑则添加 permission_classes = []

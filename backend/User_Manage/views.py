@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -7,7 +9,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
 from User_Manage import models
 from django.core import serializers
-from login import models
+
 from rest_framework_jwt.authentication import jwt_decode_handler
 
 
@@ -18,9 +20,12 @@ def requires_auth(f):
         #     return f(request, *args, **kwargs)
         # return JsonResponse({"msg": "权限不够"},
         #                     json_dumps_params={"ensure_ascii": False})
-        auth = request.stream.META.get('Token')
-        user_token = jwt_decode_handler(auth)
-        permission = user_token.get('permission')
+        token = request.META.get('HTTP_AUTHORIZATION').split(" ")[-1]
+        user_token = jwt_decode_handler(token)
+        user_id = user_token['user_id']
+        user_account = models.UserInfo.objects.filter(pk=user_id).first().account
+        permission = user_account.permission.permission_grade
+
         if int(permission) < 3:
             return f(request, *args, **kwargs)
         return JsonResponse({"msg": "权限不够"},
@@ -90,18 +95,40 @@ class User_select(APIView):
             res = serializers.serialize('json', user_obj)
             return JsonResponse(res, safe=False)
 
+    # @requires_auth
+    # def get(self, request):
+    #     user_obj = models.UserInfo.objects.all()
+    #     res = serializers.serialize('json', user_obj)
+    #     return JsonResponse(res, safe=False)
+
+
+class User_Info(APIView):
+    @requires_auth
+    def post(self, request):
+        user_dict = models.UserInfo.objects.all().values('id', 'name', 'birthday', 'gender', 'phone')
+        res = list(user_dict)
+        return JsonResponse(res, safe=False)
+
 
 class User_select_myself(APIView):
-    def post(self, request):
-        user_id = request.POST.get('id')
-        user_obj = models.UserInfo.objects.filter(pk=user_id)
-        user_school_obj = user_obj.school
-        user_department_obj = user_obj.depart_set
-        res1 = serializers.serialize('json', user_obj)
-        res2 = serializers.serialize('json', user_school_obj)
-        res3 = serializers.serialize('json',user_department_obj)
-        res = res1 + res2 + res3
+    def get(self, request):
+        logging.warning(request.META)
+        token = request.META.get('HTTP_AUTHORIZATION').split(" ")[-1]
+        user_token = jwt_decode_handler(token)
+        user_id = user_token['user_id']
+
+        user_dict = models.UserInfo.objects.filter(pk=user_id).values('id', 'name', 'birthday', 'gender', 'phone'
+                                                                      )
+        school_id = models.UserInfo.objects.filter(pk=user_id).first().school_id
+        school_dict = models.School.objects.filter(pk=school_id).values('school_name', 'stu_class', 'grade', 'major')
+        department = models.UserInfo.objects.filter(pk=user_id).first().department.values('department_name', 'position')
+        res = list(user_dict) + list(school_dict) + list(department)
+
         return JsonResponse(res, safe=False)
+        # return HttpResponse("hello")
+
+    # def get(self, request):
+    #     return HttpResponse("hello")
 
 
 class School_add(APIView):
@@ -171,6 +198,14 @@ class School_select(APIView):
             return JsonResponse(res, safe=False)
 
 
+class School_Info(APIView):
+    @requires_auth
+    def post(self, request):
+        school_obj = models.School.objects.all().values('school_name', 'grade', 'major', 'stu_class', 'post')
+        res = list(school_obj)
+        return JsonResponse(res, safe=False)
+
+
 class Department_add(APIView):
     @requires_auth
     def post(self, request):
@@ -235,6 +270,16 @@ class Department_select(APIView):
             return JsonResponse(res, safe=False)
 
 
+class Department_Info(APIView):
+    @requires_auth
+    def post(self, request):
+        department_dict = models.Department_staff.objects.all().values('department_name', 'position', 'incumbency',
+                                                                       'entry_date', 'userinfo__name')
+
+        res = list(department_dict)
+        return JsonResponse(res, safe=False)
+
+
 def require_super(f):
     def inner(request, *args, **kwargs):
         # permisson = request.POST.get('permission')
@@ -242,9 +287,11 @@ def require_super(f):
         #     return f(request, *args, **kwargs)
         # return JsonResponse({"msg": '权限不够'},
         #                     json_dumps_params={"ensure_ascii": False})
-        auth = request.stream.META.get('Token')
-        user_token = jwt_decode_handler(auth)
-        permission = user_token.get('permission')
+        token = request.META.get('HTTP_AUTHORIZATION').split(" ")[-1]
+        user_token = jwt_decode_handler(token)
+        user_id = user_token['user_id']
+        user_account = models.UserInfo.objects.filter(pk=user_id).first().account
+        permission = user_account.permission.permission_grade
         if int(permission) == 1:
             return f(request, *args, **kwargs)
         return JsonResponse({"msg": "权限不够"},

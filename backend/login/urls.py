@@ -17,6 +17,8 @@ urlpatterns = [
     path('captcha/', CaptchaAPIView.as_view(), name='captcha_api'),  # GET 返回验证码接口
     path('captcha/token/', DmallTokenObtainPairView.as_view(), name='mytoken'),
 
+
+
     path('test/', test.as_view(), name='test'),
     path('test_no_login/', test_no_login.as_view(), name='test'),
 ]

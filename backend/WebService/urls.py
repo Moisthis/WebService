@@ -21,8 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),  # 可浏览 API
     path('docs/', include_docs_urls(title='api-docs', permission_classes=[])),  # 接口文档
-
+    path('api/test/', include_docs_urls('app01.urls')),
     path('api/login/', include('login.urls')),
-    path('api/User/',include('User_Manage.urls')),
+    path('api/user/', include('User_Manage.urls')),
 
 ]
