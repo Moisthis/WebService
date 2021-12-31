@@ -37,8 +37,10 @@ if __name__ == '__main__':
     # user_dict = models.UserInfo.objects.all().values('id', 'name', 'birthday', 'gender', 'phone')
     # res = list(user_dict)
     # print(res)
-    user_id = 1
-    user_account = models.UserInfo.objects.filter(pk=user_id).first().account
-    permission = user_account.permission.permission_grade
-    print(permission)
+    # # user_id = 1
+    #     # user_account = models.UserInfo.objects.filter(pk=user_id).first().account
+    #     # permission = user_account.permission.permission_grade
+    school_obj = models.School.objects.all().values('school_name', 'grade', 'major', 'stu_class', 'post')
+    res = list(school_obj)
+    print(res)
 
