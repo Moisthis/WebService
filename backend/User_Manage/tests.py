@@ -18,34 +18,32 @@ if __name__ == '__main__':
     django.setup()
     from User_Manage import models
 
+    user_obj = models.UserInfo.objects.all()
+    user_dict = models.UserInfo.objects.filter(pk=1).values('id', 'name', 'birthday', 'gender', 'phone'
+                                                            )
 
-    print(id)
+    user_set = []
+    for i in user_obj:
+        user_set.append(model_to_dict(i))
 
-    # if res == None:
-    #     print('ss')
-    #
-    # user_set = []
-    # for i in user_obj:
-    #     user_set.append(model_to_dict(i))
-
-    # res2 = {
-    #     "data":
-    #         {
-    #             "id": 101,
-    #             "authname": "商品管理",
-    #             "userinfo": user_set
-    #         },
-    #     "meta":
-    #         {
-    #             "msg": "获取成功",
-    #             "status": 200
-    #         }
-    # }
-    # school_id = models.UserInfo.objects.filter(pk=1).first().school_id
-    # school_dict = models.School.objects.filter(pk=school_id).values('school_name', 'stu_class', 'grade', 'major')
+    res2 = {
+        "data":
+            {
+                "id": 101,
+                "authname": "商品管理",
+                "userinfo": user_set
+            },
+        "meta":
+            {
+                "msg": "获取成功",
+                "status": 200
+            }
+    }
+    school_id = models.UserInfo.objects.filter(pk=1).first().school_id
+    school_dict = models.School.objects.filter(pk=school_id).values('school_name', 'stu_class', 'grade', 'major')
     # user_dict.update(school_dict)
-    # res = list(user_dict)+list(school_dict)
-    # print(res[0]['id'])
+    res = list(user_dict)+list(school_dict)
+    print(res[0]['id'])
 
     # user_obj[0]['gender'] = user_obj.get_gender_display()
     # user_dict[0]['gender'] = user_obj.get_gender_display()
