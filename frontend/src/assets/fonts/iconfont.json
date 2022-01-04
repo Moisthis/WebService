@@ -1,0 +1,44 @@
+{
+  "id": "3028085",
+  "name": "iconfont",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1260",
+      "name": "好友",
+      "font_class": "haoyou",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "31098",
+      "name": "部门",
+      "font_class": "bumen",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "9696382",
+      "name": "信用信息管理、信息管理类",
+      "font_class": "icon_xinyong_xianxing_jijin-",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "11776597",
+      "name": "找学院",
+      "font_class": "zhaoxueyuan",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "18165589",
+      "name": "收集箱,箱子,文件箱,盒",
+      "font_class": "cbox-full",
+      "unicode": "e898",
+      "unicode_decimal": 59544
+    }
+  ]
+}
