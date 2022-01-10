@@ -9,10 +9,11 @@ import School from '@/components/school/School'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
-    redirect: '/login'
-},
+const routes = [
+    {
+        path: '/',
+        redirect: '/login'
+    },
     {
         path: '/login',
         component: Login
@@ -27,7 +28,6 @@ const routes = [{
             {path: '/1-1', component: UserLook},
             {path: '/4-1', component: School}
         ]
-
     }
 ]
 

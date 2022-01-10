@@ -35,9 +35,6 @@ class DmallTokenObtainPairView(TokenObtainPairView):
     serializer_class = DmallTokenObtainPairSerializer
 
 
-
-
-
 class test(APIView):  # 使用 token 之后，应当继承 APIView 类
     """
     just a test

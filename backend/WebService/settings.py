@@ -87,9 +87,9 @@ DATABASES = {
         'NAME': 'WebService',  # 数据库名
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',  # 用户名
-        'PASSWORD': 'WebService_password12345',  # 密码
-        'HOST': '120.27.135.145',  # 主机IP
-        'PORT': '9050',  # 端口
+        'PASSWORD': 'root',  # 密码
+        'HOST': '127.0.0.1',  # 主机IP
+        'PORT': '3306',  # 端口
         'useSSL': 'false',
         'CHARSET': 'utf8'
     }

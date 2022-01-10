@@ -8,7 +8,7 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 import axios from 'axios'
 //配置请求的根路径
-axios.defaults.baseURL = 'http://120.27.135.145:9048'
+axios.defaults.baseURL = 'http://127.0.0.1:8000'
     /* 设置axios请求头加入token */
 axios.interceptors.request.use(config => {
     //判断是否存在token，如果存在将每个页面header添加token

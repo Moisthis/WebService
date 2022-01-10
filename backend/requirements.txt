@@ -4,5 +4,5 @@ Django==3.2.9
 django_recaptcha==2.0.6
 djangorestframework==3.12.4
 PyJWT==1.7.1
-django-simple-captcha==0.5.14
+django-simple-captcha==0.5.13
 coreapi==2.3.3
